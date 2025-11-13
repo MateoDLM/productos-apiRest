@@ -52,7 +52,9 @@ mvn clean install
 mvn spring-boot:run
 
 5. **Verificar que la aplicación esté corriendo:**
+## 🔗 Acceso a Herramientas
 ### Swagger UI - Documentación Interactiva
+
 Una vez que la aplicación esté corriendo, accede a la documentación interactiva de Swagger desde el navegador a:
 
 🔗 **URL:** `http://localhost:8080/swagger-ui/index.html`
@@ -61,9 +63,9 @@ Desde aquí podrás:
 - Ver todos los endpoints disponibles
 - Probar cada endpoint directamente desde el navegador
 - Ver los modelos de datos (schemas)
-- Consultar códigos de respuesta y ejemplos
 
 ### Consola H2 Database
+
 Para acceder a la consola de administración de la base de datos H2:
 
 🔗 **URL:** `http://localhost:8080/h2-console`
@@ -77,7 +79,6 @@ Desde la consola H2 puedes:
 - Ejecutar consultas SQL directamente
 - Ver las tablas creadas automáticamente por JPA
 - Verificar los datos persistidos
-- Realizar operaciones de base de datos manualmente
 
 ---
 
