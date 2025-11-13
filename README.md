@@ -94,17 +94,6 @@ Para acceder a la consola de administración de la base de datos H2:
 | **PATCH** | `/api/productos/{id}/stock` | Actualiza solo el stock de un producto
 | **DELETE** | `/api/productos/{id}` | Elimina un producto por ID
 
-### Ejemplo de Objeto Producto (JSON)
-
-{
-"id": 1,
-"nombre": "Laptop HP Pavilion",
-"descripcion": "Laptop de 15 pulgadas, 16GB RAM, 512GB SSD",
-"precio": 899.99,
-"stock": 25,
-"categoria": "Electrónica"
-}
-
 ## ⚙️ Códigos de estado HTTP comunes
 
 | Código | Significado | 
