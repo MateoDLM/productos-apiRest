@@ -67,7 +67,7 @@ mvn spring-boot:run
 
 🔗 Acceso a Herramientas
 
--Swagger UI - Documentación Interactiva
+ -Swagger UI - Documentación Interactiva
 ```
 Una vez que la aplicación esté corriendo, accede a la documentación interactiva de Swagger desde el navegador a:
 
@@ -77,9 +77,8 @@ Desde aquí podrás:
 - Ver todos los endpoints disponibles
 - Probar cada endpoint directamente desde el navegador
 - Ver los modelos de datos (schemas)
-
 ```
--Consola H2 Database
+ -Consola H2 Database
 ```
 Para acceder a la consola de administración de la base de datos H2:
 
