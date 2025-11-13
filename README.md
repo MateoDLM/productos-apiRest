@@ -33,7 +33,7 @@ La aplicación está diseñada con una arquitectura en capas (Controller, Servic
 ### Prerrequisitos
 
 - **Java 21** o superior instalado
-- **Maven** 3.6+ (o usar el wrapper incluido)
+- **Maven** 3.6+
 - **Git** instalado
 - IDE recomendado: **IntelliJ IDEA** o **Eclipse**
 
@@ -41,23 +41,42 @@ La aplicación está diseñada con una arquitectura en capas (Controller, Servic
 
 1. **Clonar el repositorio:**
 git clone https://github.com/MateoDLM/productos-apiRest.git
+
+2. **Entrar a la carpeta del proyecto:**
 cd productos-api
 
-2. **Compilar el proyecto:**
+3. **Compilar el proyecto:**
 mvn clean install
-O si usas el wrapper de Maven:
-./mvnw clean install
 
-
-3. **Ejecutar la aplicación:**
+4. **Ejecutar la aplicación:**
 mvn spring-boot:run
-O si usas el wrapper:
-./mvnw spring-boot:run
 
+5. **Verificar que la aplicación esté corriendo:**
+### Swagger UI - Documentación Interactiva
+Una vez que la aplicación esté corriendo, accede a la documentación interactiva de Swagger desde el navegador a:
 
-4. **Verificar que la aplicación esté corriendo:**
+🔗 **URL:** `http://localhost:8080/swagger-ui/index.html`
 
-La aplicación se ejecutará en: `http://localhost:8080`
+Desde aquí podrás:
+- Ver todos los endpoints disponibles
+- Probar cada endpoint directamente desde el navegador
+- Ver los modelos de datos (schemas)
+- Consultar códigos de respuesta y ejemplos
+
+### Consola H2 Database
+Para acceder a la consola de administración de la base de datos H2:
+🔗 **URL:** `http://localhost:8080/h2-console`
+
+**Credenciales de acceso:**
+- **JDBC URL:** `jdbc:h2:mem:testdb`
+- **User Name:** `sa`
+- **Password:** *(dejar vacío)*
+
+- Desde la consola H2 puedes:
+- Ejecutar consultas SQL directamente
+- Ver las tablas creadas automáticamente por JPA
+- Verificar los datos persistidos
+- Realizar operaciones de base de datos manualmente
 
 ---
 
@@ -65,13 +84,15 @@ La aplicación se ejecutará en: `http://localhost:8080`
 
 ### Tabla de Endpoints
 
-| Método HTTP | Ruta | Descripción | Código de Respuesta |
-|-------------|------|-------------|---------------------|
-| **GET** | `/api/productos` | Obtiene la lista de todos los productos | 200 OK |
-| **GET** | `/api/productos/{id}` | Obtiene un producto específico por ID | 200 OK / 404 Not Found |
-| **POST** | `/api/productos` | Crea un nuevo producto | 201 Created / 400 Bad Request |
-| **PUT** | `/api/productos/{id}` | Actualiza un producto existente | 200 OK / 404 Not Found |
-| **DELETE** | `/api/productos/{id}` | Elimina un producto por ID | 204 No Content / 404 Not Found |
+| Método HTTP | Ruta | Descripción | 
+|-------------|------|-------------|
+| **GET** | `/api/productos` | Obtiene la lista de todos los productos
+| **GET** | `/api/productos/{id}` | Obtiene un producto específico por ID
+| **GET** | `/api/productos/categoria/{categoria}` | Filtra y lista los productos por categoría
+| **POST** | `/api/productos` | Crea un nuevo producto
+| **PUT** | `/api/productos/{id}` | Actualiza un producto existente
+| **PATCH** | `/api/productos/{id}/stock` | Actualiza solo el stock de un producto
+| **DELETE** | `/api/productos/{id}` | Elimina un producto por ID
 
 ### Ejemplo de Objeto Producto (JSON)
 
@@ -84,14 +105,16 @@ La aplicación se ejecutará en: `http://localhost:8080`
 "categoria": "Electrónica"
 }
 
+## ⚙️ Códigos de estado HTTP comunes
 
-### Validaciones Implementadas
-
-- **nombre**: No puede estar vacío, longitud mínima 3 caracteres
-- **descripcion**: Opcional, máximo 500 caracteres
-- **precio**: Debe ser mayor a 0
-- **stock**: Debe ser mayor o igual a 0
-- **categoria**: No puede estar vacía
+| Código | Significado | 
+|-------------|------|
+| **200** | `Solicitud exitosa (OK)` 
+| **201** | `Recurso creado exitosamente` 
+| **204** | `Recurso eliminado exitosamente (sin contenido)` 
+| **400** | `Error de validación de datos` 
+| **404** | `Recurso no encontrado` 
+| **500** | `Error interno del servidor` 
 
 ---
 
@@ -99,7 +122,7 @@ La aplicación se ejecutará en: `http://localhost:8080`
 
 ### 1. Documentación Completa de Endpoints en Swagger UI
 
-![Swagger UI - Documentación completa](ruta/a/tu/captura1.png)
+![Imagen de WhatsApp 2025-11-13 a las 00 06 52_ed3bda46](https://github.com/user-attachments/assets/c6345618-0e7d-40a8-a5cd-7ec945a75f06)
 
 *Vista general de todos los endpoints disponibles en la API documentados con Swagger UI.*
 
@@ -107,7 +130,7 @@ La aplicación se ejecutará en: `http://localhost:8080`
 
 ### 2. Prueba Exitosa de POST - Creando un Producto
 
-![POST exitoso](ruta/a/tu/captura2.png)
+![Imagen de WhatsApp 2025-11-12 a las 17 09 48_6b789179](https://github.com/user-attachments/assets/765599a6-e368-42f2-91b6-50d8f9a86085)
 
 *Creación exitosa de un nuevo producto mediante el endpoint POST /api/productos con código de respuesta 201 Created.*
 
@@ -115,7 +138,7 @@ La aplicación se ejecutará en: `http://localhost:8080`
 
 ### 3. Prueba de GET - Listando Productos
 
-![GET listado](ruta/a/tu/captura3.png)
+![Imagen de WhatsApp 2025-11-12 a las 17 15 58_009cef5c](https://github.com/user-attachments/assets/48cfe459-b3ff-4eac-b17c-cf11d51dbd3d)
 
 *Obtención exitosa de la lista completa de productos mediante el endpoint GET /api/productos.*
 
@@ -123,7 +146,7 @@ La aplicación se ejecutará en: `http://localhost:8080`
 
 ### 4. Error 404 - Producto No Existe
 
-![Error 404](ruta/a/tu/captura4.png)
+![Imagen de WhatsApp 2025-11-12 a las 17 18 20_999c6504](https://github.com/user-attachments/assets/0c073e3a-54d3-4f6c-bb5e-8e2f639d8136)
 
 *Manejo de error cuando se intenta acceder a un producto que no existe en la base de datos.*
 
@@ -131,7 +154,7 @@ La aplicación se ejecutará en: `http://localhost:8080`
 
 ### 5. Error 400 - Validación de Datos
 
-![Error 400](ruta/a/tu/captura5.png)
+![Imagen de WhatsApp 2025-11-12 a las 17 14 13_ca45d6a9](https://github.com/user-attachments/assets/06e11113-cff4-4fb5-aca1-4d69fd58c371)
 
 *Validación de datos incorrectos al intentar crear un producto con campos inválidos.*
 
@@ -139,73 +162,44 @@ La aplicación se ejecutará en: `http://localhost:8080`
 
 ### 6. Consola H2 - Datos Persistidos
 
-![Consola H2](ruta/a/tu/captura6.png)
+![Imagen de WhatsApp 2025-11-12 a las 17 33 15_c431274d](https://github.com/user-attachments/assets/26a350dd-5c15-47b6-af6a-6501e20d4c54)
 
 *Vista de la consola H2 mostrando los productos persistidos en la base de datos.*
 
 ---
 
-## 🔗 Acceso a Herramientas
-
-### Swagger UI - Documentación Interactiva
-
-Una vez que la aplicación esté corriendo, accede a la documentación interactiva de Swagger:
-
-🔗 **URL:** `http://localhost:8080/swagger-ui/index.html`
-
-Desde aquí podrás:
-- Ver todos los endpoints disponibles
-- Probar cada endpoint directamente desde el navegador
-- Ver los modelos de datos (schemas)
-- Consultar códigos de respuesta y ejemplos
-
-### Consola H2 Database
-
-Para acceder a la consola de administración de la base de datos H2:
-
-🔗 **URL:** `http://localhost:8080/h2-console`
-
-**Credenciales de acceso:**
-- **JDBC URL:** `jdbc:h2:mem:testdb`
-- **User Name:** `sa`
-- **Password:** *(dejar vacío)*
-
-Desde la consola H2 puedes:
-- Ejecutar consultas SQL directamente
-- Ver las tablas creadas automáticamente por JPA
-- Verificar los datos persistidos
-- Realizar operaciones de base de datos manualmente
-
----
-
 ## 📂 Estructura del Proyecto
 
-productos-apiRest/
-├── src/
-│ ├── main/
-│ │ ├── java/
-│ │ │ └── com/
-│ │ │ └── tuusuario/
-│ │ │ └── productos/
-│ │ │ ├── controller/ # Controladores REST
-│ │ │ │ └── ProductoController.java
-│ │ │ ├── service/ # Lógica de negocio
-│ │ │ │ └── ProductoService.java
-│ │ │ ├── repository/ # Acceso a datos
-│ │ │ │ └── ProductoRepository.java
-│ │ │ ├── model/ # Entidades JPA
-│ │ │ │ └── Producto.java
-│ │ │ ├── exception/ # Manejo de excepciones
-│ │ │ │ └── GlobalExceptionHandler.java
-│ │ │ └── ProductosApiRestApplication.java
-│ │ └── resources/
-│ │ ├── application.properties # Configuración
-│ │ └── data.sql # Datos iniciales (opcional)
-│ └── test/ # Tests unitarios
-├── pom.xml # Dependencias Maven
-└── README.md
-
-
+```
+📦 productos-apiRest
+ ┣ 📂 src
+ ┃ ┣ 📂 main
+ ┃ ┃ ┣ 📂 java/com/utn/productos_api
+ ┃ ┃ ┃ ┣ 📂 Model
+ ┃ ┃ ┃ ┃ ┣ 📜 Categoria.java                    # Enum de categorías
+ ┃ ┃ ┃ ┃ ┗ 📜 Producto.java                     # Entidad JPA con Lombok
+ ┃ ┃ ┃ ┣ 📂 DTO
+ ┃ ┃ ┃ ┃ ┣ 📜 ProductoDTO.java                  # DTO con Lombok para crear/actualizar
+ ┃ ┃ ┃ ┃ ┣ 📜 ProductoResponseDTO.java          # Record para respuestas
+ ┃ ┃ ┃ ┃ ┗ 📜 ActualizarStockDTO.java           # DTO con Lombok para PATCH de stock
+ ┃ ┃ ┃ ┣ 📂 Repository
+ ┃ ┃ ┃ ┃ ┗ 📜 ProductoRepository.java           # Interfaz JPA Repository
+ ┃ ┃ ┃ ┣ 📂 Service
+ ┃ ┃ ┃ ┃ ┗ 📜 ProductoService.java              # Lógica de negocio
+ ┃ ┃ ┃ ┣ 📂 Controller
+ ┃ ┃ ┃ ┃ ┗ 📜 ProductoController.java           # Endpoints REST
+ ┃ ┃ ┃ ┣ 📂 Exception
+ ┃ ┃ ┃ ┃ ┣ 📜 ProductoNotFoundException.java
+ ┃ ┃ ┃ ┃ ┣ 📜 StockInsuficienteException.java
+ ┃ ┃ ┃ ┃ ┣ 📜 ErrorResponse.java
+ ┃ ┃ ┃ ┃ ┗ 📜 GlobalExceptionHandler.java
+ ┃ ┃ ┃ ┗ 📜 ProductosApiApplication.java        # Clase principal
+ ┃ ┃ ┗ 📂 Resources
+ ┃ ┃ ┃ ┗ 📄 application.properties              # Configuración
+ ┃ ┗ 📂 test/java                               # Tests unitarios
+ ┗ 📄 pom.xml                                   # Dependencias Maven
+```
+ 
 ---
 
 ## 💭 Conclusiones y Aprendizajes
@@ -238,8 +232,8 @@ Durante el desarrollo de este proyecto, he profundizado en varios conceptos fund
 **Legajo:** 50866  
 **Universidad:** UTN - Universidad Tecnológica Nacional  
 **Materia:** Desarrollo de Software  
-**Año:** 3er Año - 2do Semestre  
-**Fecha:** Noviembre 2025
+**Año:** 3er Año - 2do Semestre - 2025  
+**Email:** mateodelucamontanaro@gmail.com
 
 ---
 
@@ -248,5 +242,3 @@ Durante el desarrollo de este proyecto, he profundizado en varios conceptos fund
 Este proyecto está bajo la Licencia MIT. Ver el archivo [LICENSE](LICENSE) para más detalles.
 
 ---
-
-
