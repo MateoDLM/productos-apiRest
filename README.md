@@ -65,7 +65,7 @@ mvn spring-boot:run
 
 6. **Verificar que la aplicación esté corriendo:**
 🔗 Acceso a Herramientas
-
+```
 Swagger UI - Documentación Interactiva
 
 Una vez que la aplicación esté corriendo, accede a la documentación interactiva de Swagger desde el navegador a:
@@ -77,6 +77,8 @@ Desde aquí podrás:
 - Probar cada endpoint directamente desde el navegador
 - Ver los modelos de datos (schemas)
 
+```
+```
 Consola H2 Database
 
 Para acceder a la consola de administración de la base de datos H2:
@@ -92,6 +94,7 @@ Desde la consola H2 puedes:
 - Ejecutar consultas SQL directamente
 - Ver las tablas creadas automáticamente por JPA
 - Verificar los datos persistidos
+```
 
 ---
 
