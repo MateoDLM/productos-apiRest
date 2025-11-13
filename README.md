@@ -40,20 +40,33 @@ La aplicación está diseñada con una arquitectura en capas (Controller, Servic
 ### Pasos para ejecutar el proyecto
 
 1. **Clonar el repositorio:**
+
+```
 git clone https://github.com/MateoDLM/productos-apiRest.git
+```
 
-2. **Entrar a la carpeta del proyecto:**
+3. **Entrar a la carpeta del proyecto:**
+
+```
 cd productos-api
+```
 
-3. **Compilar el proyecto:**
+4. **Compilar el proyecto:**
+
+```
 mvn clean install
+```
 
-4. **Ejecutar la aplicación:**
+5. **Ejecutar la aplicación:**
+
+```
 mvn spring-boot:run
+```
 
-5. **Verificar que la aplicación esté corriendo:**
-## 🔗 Acceso a Herramientas
-### Swagger UI - Documentación Interactiva
+6. **Verificar que la aplicación esté corriendo:**
+🔗 Acceso a Herramientas
+
+Swagger UI - Documentación Interactiva
 
 Una vez que la aplicación esté corriendo, accede a la documentación interactiva de Swagger desde el navegador a:
 
@@ -64,7 +77,7 @@ Desde aquí podrás:
 - Probar cada endpoint directamente desde el navegador
 - Ver los modelos de datos (schemas)
 
-### Consola H2 Database
+Consola H2 Database
 
 Para acceder a la consola de administración de la base de datos H2:
 
