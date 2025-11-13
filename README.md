@@ -65,6 +65,7 @@ Desde aquí podrás:
 
 ### Consola H2 Database
 Para acceder a la consola de administración de la base de datos H2:
+
 🔗 **URL:** `http://localhost:8080/h2-console`
 
 **Credenciales de acceso:**
@@ -72,7 +73,7 @@ Para acceder a la consola de administración de la base de datos H2:
 - **User Name:** `sa`
 - **Password:** *(dejar vacío)*
 
-- Desde la consola H2 puedes:
+Desde la consola H2 puedes:
 - Ejecutar consultas SQL directamente
 - Ver las tablas creadas automáticamente por JPA
 - Verificar los datos persistidos
